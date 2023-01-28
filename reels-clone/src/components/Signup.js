@@ -42,10 +42,10 @@ export default function Signup() {
               </Typography>
             </CardContent>
         </Card>
-        <Card variant="outlined">
+        <Card variant="outlined" sx={{height: "7vh", marginTop: "2%"}}>
         <CardContent>
               <Typography sx={{color: "grey", textAlign: "center"}} variant="subtitle1">
-                Have an account? <Link to="/login">Login</Link>
+                Have an account? <Link to="/login" style={{textDecoration: "none"}}>Login</Link>
               </Typography>
             </CardContent>
         </Card>
