@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -10,20 +11,23 @@ import {
   Slide,
   ButtonBack,
   ButtonNext,
-  Image
+  Image,
 } from "pure-react-carousel";
 import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
 import "./Login.css";
-import 'pure-react-carousel/dist/react-carousel.es.css';
+import "pure-react-carousel/dist/react-carousel.es.css";
+import { AuthContext } from "../context/AuthContext";
 import carbg from "../assets/carbg.jpg";
 import insta from "../assets/insta.jpg";
-import bg1 from "../assets/bg1.jpg"
-import bg2 from "../assets/bg2.jpg"
-import bg3 from "../assets/bg3.jpg"
+import bg1 from "../assets/bg1.jpg";
+import bg2 from "../assets/bg2.jpg";
+import bg3 from "../assets/bg3.jpg";
 
-export default function Signup() {
+export default function Login() {
+  const store = useContext(AuthContext);
+  console.log(store);
   return (
     <div className="loginWrapper">
       <div
@@ -47,9 +51,15 @@ export default function Signup() {
             touchEnabled={false}
           >
             <Slider>
-              <Slide index={0}><Image src={bg1}/></Slide>
-              <Slide index={1}><Image src={bg2}/></Slide>
-              <Slide index={2}><Image src={bg3}/></Slide>
+              <Slide index={0}>
+                <Image src={bg1} />
+              </Slide>
+              <Slide index={1}>
+                <Image src={bg2} />
+              </Slide>
+              <Slide index={2}>
+                <Image src={bg3} />
+              </Slide>
             </Slider>
           </CarouselProvider>
         </div>
