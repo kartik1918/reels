@@ -19,7 +19,7 @@ export default function Signup() {
     const [name, setName] = useState('');
     const [file, setFile] = useState(null);
     const [error, setError] = useState();
-    const [loading, setLoading] = useState('')
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
     const {signUp} = useContext(AuthContext)
 
