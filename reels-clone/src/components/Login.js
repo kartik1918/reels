@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -15,7 +16,7 @@ import {
 } from "pure-react-carousel";
 import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import "./Login.css";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import { AuthContext } from "../context/AuthContext";
@@ -26,8 +27,29 @@ import bg2 from "../assets/bg2.jpg";
 import bg3 from "../assets/bg3.jpg";
 
 export default function Login() {
-  const store = useContext(AuthContext);
-  console.log(store);
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
+  const {login} = useContext(AuthContext);
+
+  const handleClick = async () => {
+    try {
+        setError('')
+        setLoading(true)
+        let res = await login(email, password)
+        setLoading(false)
+        navigate('/')
+    } catch(err) {
+        setError(err)
+        setTimeout(() => {
+            setError('')
+        }, 2000)
+        setLoading(false)
+    }
+  }
+
   return (
     <div className="loginWrapper">
       <div
@@ -70,9 +92,9 @@ export default function Login() {
             <img src={insta} />
           </div>
           <CardContent>
-            {true && (
+            {error && (
               <Alert severity="error">
-                This is an error alert — check it out!
+                {error}
               </Alert>
             )}
             <TextField
@@ -82,6 +104,8 @@ export default function Login() {
               fullWidth={true}
               margin="dense"
               size="small"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               id="outlined-basic"
@@ -90,6 +114,8 @@ export default function Login() {
               fullWidth={true}
               margin="dense"
               size="small"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <Typography
               sx={{ textAlign: "center" }}
@@ -100,7 +126,7 @@ export default function Login() {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button color="primary" fullWidth={true} variant="contained">
+            <Button color="primary" fullWidth={true} variant="contained" onClick={handleClick} disabled={loading}>
               Log In
             </Button>
           </CardActions>
