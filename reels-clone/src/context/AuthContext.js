@@ -3,7 +3,6 @@ import { auth } from "../firebase";
 export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
-    console.log("children are heer--------->", children);
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -15,8 +14,13 @@ export const AuthProvider = ({ children }) => {
     return auth.signInWithEmailAndPassword(email, password);
   };
 
-  const logout = () => {
-    return auth.signOut();
+  const logout = async () => {
+    return auth.signOut().then(() => {
+        console.log("Sign out success");
+    }).catch(err => {
+        console.log("Error Signing out", err);
+    })
+    ;
   };
 
   useEffect(() => {
@@ -28,7 +32,7 @@ export const AuthProvider = ({ children }) => {
     return () => {
       unsub();
     };
-  }, []);
+  }, [user]);
 
   const store = {
     user,

@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import Alert from '@mui/material/Alert';
 import TextField from '@mui/material/TextField';
-import {Link, useNavigate} from "react-router-dom"
+import {Link, useHistory} from "react-router-dom"
 import { AuthContext } from "../context/AuthContext";
 import { database, storage } from "../firebase";
 import "./Signup.css"
@@ -20,7 +20,7 @@ export default function Signup() {
     const [file, setFile] = useState(null);
     const [error, setError] = useState();
     const [loading, setLoading] = useState(false)
-    const navigate = useNavigate()
+    const history = useHistory()
     const {signUp} = useContext(AuthContext)
 
     const handleClick = async () => {
@@ -62,7 +62,7 @@ export default function Signup() {
                     })
                 })
                 setLoading(false)
-                navigate("/")
+                history.push("/")
             }
         } catch(err) {
             setError(err)
@@ -93,7 +93,7 @@ export default function Signup() {
             </Button>
             </CardContent>
           <CardActions>
-            <Button color="primary" fullWidth={true} variant="contained" disable={loading} onClick={handleClick}>
+            <Button color="primary" fullWidth={true} variant="contained" disabled={loading} onClick={handleClick}>
               SIGN UP
             </Button>
           </CardActions>

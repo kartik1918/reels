@@ -16,7 +16,7 @@ import {
 } from "pure-react-carousel";
 import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useHistory } from "react-router-dom";
 import "./Login.css";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import { AuthContext } from "../context/AuthContext";
@@ -31,7 +31,7 @@ export default function Login() {
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-    const navigate = useNavigate()
+    const history = useHistory()
   const {login} = useContext(AuthContext);
 
   const handleClick = async () => {
@@ -40,7 +40,7 @@ export default function Login() {
         setLoading(true)
         let res = await login(email, password)
         setLoading(false)
-        navigate('/')
+        history.push('/')
     } catch(err) {
         setError(err)
         setTimeout(() => {
