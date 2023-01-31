@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { database } from "../firebase";
 import CircularProgress from "@mui/material/CircularProgress";
 import Video from "./Video";
+import "./Posts.css"
 
 const Posts = ({ userData }) => {
   const [posts, setPosts] = useState(null);
