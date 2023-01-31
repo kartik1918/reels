@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { database } from "../firebase";
 import CircularProgress from "@mui/material/CircularProgress";
+import Video from "./Video";
 
 const Posts = ({ userData }) => {
   const [posts, setPosts] = useState(null);
@@ -22,7 +23,16 @@ const Posts = ({ userData }) => {
   }, []);
   return (
     <div>
-      {posts == null || userData == null ? <CircularProgress /> : <>Posts</>}
+      {posts == null || userData == null ? <CircularProgress /> : 
+      <div className="video-container">
+        {posts.map((post, index) => (
+            <React.Fragment key={index}>
+                <div className="videos">
+                    <Video src={post.pUrl}/>
+                </div>
+            </React.Fragment>
+        ))}
+      </div>}
     </div>
   );
 };
