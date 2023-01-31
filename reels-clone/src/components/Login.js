@@ -122,7 +122,7 @@ export default function Login() {
               color="primary"
               variant="subtitle1"
             >
-              Forget Password ?
+              <Link to="/forgotPassword" style={{textDecoration: "none"}}>Forget Password ?</Link>
             </Typography>
           </CardContent>
           <CardActions>
