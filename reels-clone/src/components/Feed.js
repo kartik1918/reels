@@ -29,10 +29,6 @@ const Feed = () => {
           flexDirection: "column",
         }}
       >
-        {/* <div className="comp" style={{ width: "50%" }}>
-        <h1>Welcome to feed</h1>
-        <Button color="primary" variant="contained" onClick={logout}>Log Out</Button>
-      </div> */}
         <UploadFile user={userData} />
         <Posts userData={userData} />
       </div>
