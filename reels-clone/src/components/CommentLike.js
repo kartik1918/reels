@@ -28,10 +28,15 @@ const Like = ({ userData, postData }) => {
       {like !== null ? (
         <>
           {like == true ? (
-            <FavoriteIcon className="icon-styling like" onClick={handleLike} />
+            <FavoriteIcon
+              style={{ padding: "1rem", paddingTop: "0.5rem" }}
+              className="like"
+              onClick={handleLike}
+            />
           ) : (
             <FavoriteIcon
-              className="icon-styling unlike"
+              style={{ padding: "1rem", paddingTop: "0.5rem"  }}
+              className="unlike2"
               onClick={handleLike}
             />
           )}

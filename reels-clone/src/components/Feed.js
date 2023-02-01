@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { database } from "../firebase";
 import UploadFile from "./UploadFile";
+import { Button } from "@mui/material";
 import Posts from "./Posts";
 
 const Feed = () => {
@@ -27,7 +28,7 @@ const Feed = () => {
     >
       <div className="comp" style={{ width: "50%" }}>
         <h1>Welcome to feed</h1>
-        <button onClick={logout}>Log Out</button>
+        <Button color="primary" variant="contained" onClick={logout}>Log Out</Button>
       </div>
       <UploadFile user={userData} />
       <Posts userData={userData}/>
