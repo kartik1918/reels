@@ -7,7 +7,6 @@ import Like from "./Like";
 import "./Posts.css";
 
 const Posts = ({ userData }) => {
-  console.log(userData);
   const [posts, setPosts] = useState(null);
   useEffect(() => {
     let parr = [];
