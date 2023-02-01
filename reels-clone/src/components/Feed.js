@@ -4,6 +4,7 @@ import { database } from "../firebase";
 import UploadFile from "./UploadFile";
 import { Button } from "@mui/material";
 import Posts from "./Posts";
+import Navbar from "./Navbar";
 
 const Feed = () => {
   const { user, logout } = useContext(AuthContext);
@@ -18,21 +19,24 @@ const Feed = () => {
   }, [user]);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-      }}
-    >
-      <div className="comp" style={{ width: "50%" }}>
+    <>
+      <Navbar userData={userData}/>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        {/* <div className="comp" style={{ width: "50%" }}>
         <h1>Welcome to feed</h1>
         <Button color="primary" variant="contained" onClick={logout}>Log Out</Button>
+      </div> */}
+        <UploadFile user={userData} />
+        <Posts userData={userData} />
       </div>
-      <UploadFile user={userData} />
-      <Posts userData={userData}/>
-    </div>
+    </>
   );
 };
 
