@@ -1,12 +1,28 @@
 .video-container {
-    height: 80vh;
-    border-radius: 20px;
-    background: white;
-    overflow: scroll;
-    scroll-snap-type: y mandatory;
-    scrollbar-width: none;
+  height: 80vh;
+  border-radius: 20px;
+  background: white;
+  overflow: scroll;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
 }
 
 .video-container::-webkit-scrollbar {
-    display: none;
+  display: none;
+}
+
+.videos {
+  position: relative;
+}
+
+.avatar {
+  position: absolute;
+  bottom: 7%;
+  left: 10%;
+}
+
+.avatar h4 {
+  color: white;
+  margin-top: 8%;
+  margin-left: 25%;
 }
