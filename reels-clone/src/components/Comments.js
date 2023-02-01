@@ -25,7 +25,7 @@ const Comments = ({ postData }) => {
       ) : (
         <>
           {comments.map((comment, index) => (
-            <div style={{ display: "flex" }}>
+            <div style={{ display: "flex" }} key={index}>
               <Avatar src={comment.uProfileImage} />
               <p>
                 &nbsp;&nbsp;
