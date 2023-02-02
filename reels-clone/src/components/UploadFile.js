@@ -29,8 +29,7 @@ const UploadFile = (props) => {
     const uploadTask = storage.ref(`/posts/${uid}/${file.name}`).put(file);
     uploadTask.on("state_changed", fn1, fn2, fn3);
     function fn1(snapshot) {
-      console.log("snapshot issss----->", snapshot);
-      let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      let progress = Math.ceil((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
       console.log(`Upload is ${progress} done`);
     }
     function fn2(error) {
@@ -75,7 +74,6 @@ const UploadFile = (props) => {
             setLoading(false);
           });
       });
-      //   setLoading(false);
     }
   };
 

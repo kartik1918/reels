@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { database } from "../firebase";
 import UploadFile from "./UploadFile";
-import { Button } from "@mui/material";
 import Posts from "./Posts";
 import Navbar from "./Navbar";
 
